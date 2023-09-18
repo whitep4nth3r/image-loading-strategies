@@ -1,0 +1,58 @@
+---
+import Base from "../layouts/Base.astro"
+import { getRandomEntry } from "../utils/random.js"
+
+const createItems = (amount:number): number[] => {
+  const result = [];
+  for (let i = 0; i < amount; i++) {
+    result.push(i);
+  }
+
+  return result;
+}
+
+const items = createItems(100);
+const searchTerms = ["city", "night", "fruit", "sky", "cat", "car", "mountain", "plant", "food", "grass"]
+
+---
+
+<style>
+  ul {
+    padding-inline-start: 0;
+    list-style: none;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  img {
+    width: 100%;
+  }
+</style>
+
+<Base>
+  <a href="/">Go to homepage</a>
+  <h1>Lazy loading images outside of the viewport</h1>
+  <h2>100 images</h2>
+  <h3>No height/width specified on images</h3>
+  <p>The number of lazy loaded images is a best-guest — you may want to optimise this</p>
+
+  <ul>
+    {items.map((i) => {
+      if (i > 6) {
+        return (
+          <li>
+            <img src={`https://source.unsplash.com/random/500x500/?image=${getRandomEntry(searchTerms)}`} loading="lazy" alt="random image" />
+          </li>
+        )
+      }
+
+      return (
+        <li>
+          <img src={`https://source.unsplash.com/random/500x500/?image=${getRandomEntry(searchTerms)}`} alt="random image" />
+        </li>
+      )
+    })}
+  </ul>
+
+</Base>
