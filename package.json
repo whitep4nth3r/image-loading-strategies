@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
-    "build": "astro build && npm run sentry:sourcemaps",
+    "build": "astro build && npm run sentry:sourcemaps && npm run sentry:sourcemaps",
     "preview": "astro preview",
     "astro": "astro",
     "sentry:sourcemaps": "sentry-cli sourcemaps inject --org the-claw --project image-loading-strategies ./dist && sentry-cli sourcemaps upload --org the-claw --project image-loading-strategies ./dist"
