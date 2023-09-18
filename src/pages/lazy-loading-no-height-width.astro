@@ -35,11 +35,11 @@ const items = createItems(100);
   <h1>Lazy loading images outside of the viewport</h1>
   <h2>100 images</h2>
   <h3>No height/width specified on images</h3>
-  <p>The number of lazy loaded images is a best-guest — you may want to optimise this</p>
+  <p>Images are lazy loaded from the fifth one onwards. The number of lazy loaded images is a best-guest — you may want to optimise this using JavaScript to determine what is visible in the browser on different devices.</p>
 
   <ul>
     {items.map((i) => {
-      if (i > 6) {
+      if (i >= 4) {
         return (
           <li>
             <img src={`https://source.unsplash.com/random/500x500/?image=${randomWords[i]}`} loading="lazy" alt="random image" />
