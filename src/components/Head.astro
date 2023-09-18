@@ -2,14 +2,28 @@
 const {title} = Astro.props
 ---	
   
-  <head>
-		<meta charset="utf-8" />
-		<link
-			href="data:image/x-icon;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQEAYAAABPYyMiAAAABmJLR0T///////8JWPfcAAAACXBIWXMAAABIAAAASABGyWs+AAAAF0lEQVRIx2NgGAWjYBSMglEwCkbBSAcACBAAAeaR9cIAAAAASUVORK5CYII="
-			rel="icon"
-			type="image/x-icon"
-		/>
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{title}</title>
-	</head>
+<head>
+	<meta charset="utf-8" />
+	<link
+		href="data:image/x-icon;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQEAYAAABPYyMiAAAABmJLR0T///////8JWPfcAAAACXBIWXMAAABIAAAASABGyWs+AAAAF0lEQVRIx2NgGAWjYBSMglEwCkbBSAcACBAAAeaR9cIAAAAASUVORK5CYII="
+		rel="icon"
+		type="image/x-icon"
+	/>
+	<meta name="viewport" content="width=device-width" />
+	<meta name="generator" content={Astro.generator} />
+	<title>{title}</title>
+
+	<script>
+		import * as Sentry from "@sentry/browser";
+
+		Sentry.init({
+			dsn: "https://47c9856d3902a28e6ec3430aa0442cc8@o4505635661873152.ingest.sentry.io/4505900950814720",
+			integrations: [new Sentry.BrowserTracing()],
+			// Performance Monitoring
+			tracesSampleRate: 1.0, // Capture 100% of the transactions, reduce in production!
+			// Session Replay
+			replaysSessionSampleRate: 1.0, // This sets the sample rate at 10%. You may want to change it to 100% while in development and then sample at a lower rate in production.
+			replaysOnErrorSampleRate: 1.0, // If you're not already sampling the entire session, change the sample rate to 100% when sampling sessions where errors occur.
+		});
+	</script>
+</head>
