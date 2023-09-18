@@ -1,6 +1,6 @@
 ---
 import Base from "../layouts/Base.astro"
-import { getRandomEntry } from "../utils/random.js"
+import { randomWords } from "../utils/random.js"
 
 const createItems = (amount:number): number[] => {
   const result = [];
@@ -12,7 +12,6 @@ const createItems = (amount:number): number[] => {
 }
 
 const items = createItems(100);
-const searchTerms = ["city", "night", "fruit", "sky", "cat", "car", "mountain", "plant", "food", "grass"]
 
 ---
 
@@ -43,14 +42,14 @@ const searchTerms = ["city", "night", "fruit", "sky", "cat", "car", "mountain", 
       if (i > 6) {
         return (
           <li>
-            <img src={`https://source.unsplash.com/random/500x500/?image=${getRandomEntry(searchTerms)}`} loading="lazy" alt="random image" />
+            <img src={`https://source.unsplash.com/random/500x500/?image=${randomWords[i]}`} loading="lazy" alt="random image" />
           </li>
         )
       }
 
       return (
         <li>
-          <img src={`https://source.unsplash.com/random/500x500/?image=${getRandomEntry(searchTerms)}`} alt="random image" />
+          <img src={`https://source.unsplash.com/random/500x500/?image=${randomWords[i]}`} alt="random image" />
         </li>
       )
     })}
