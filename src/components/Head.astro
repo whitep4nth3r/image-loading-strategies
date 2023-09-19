@@ -18,7 +18,9 @@ const {title} = Astro.props
 
 		Sentry.init({
 			dsn: "https://47c9856d3902a28e6ec3430aa0442cc8@o4505635661873152.ingest.sentry.io/4505900950814720",
-			integrations: [new Sentry.BrowserTracing()],
+			integrations: [new Sentry.BrowserTracing({
+				heartbeatInterval: 10000
+			})],
 			// Performance Monitoring
 			tracesSampleRate: 1.0, // Capture 100% of the transactions, reduce in production!
 			// Session Replay
